@@ -1,0 +1,7 @@
+Evan's Progress:
+  10/30:
+    - Created the docker-compose file, the package.json, the .env, and the overall directory structure
+    - Created a users database
+    - Created functioning register, login, and logout pages using session variable
+  10/31:
+    - Added more user stories to the project board
