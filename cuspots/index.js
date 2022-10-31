@@ -44,28 +44,99 @@ app.use(
     })
 );
 
+//END OF USE COMMANDS SECTION
+
+//START GET REQUEST SECTION
 app.get('/', (req, res) => {
     console.log('redirecting!');
     res.redirect('/login');
 });
 
 app.get('/login', (req, res) => {
-    res.render('pages/login');
+    if(!req.session.user){
+      res.render('pages/login');
+    }else{
+      res.redirect('/logout');
+    }
 });
 
 app.get('/register', (req, res) => {
     res.render('pages/register');
 });
-
+app.get('/logout', (req, res) =>{
+  req.session.destroy();
+  res.render('pages/login', {
+    error: false,
+    message: "logged out successfully",
+  });
+});
 app.get('/map', (req, res) =>{
-    res.render('pages/map');
+  if (!req.session.user) {
+    // Default to register page.
+    return res.redirect('/register');
+  }
+  res.render('pages/map');
 });
 
+//END GET REQUEST SECTION
+
+
+//START POST SECTION
+//REGISTER:
+app.post('/register', async (req, res) => {
+  const username = req.body.username;
+  const hash = await bcrypt.hash(req.body.password, 10);
+  const query = `INSERT INTO users (username, password) VALUES ($1, $2);`;
+  db.any(query, [username, hash])
+    .then(function (data) {
+      res.render('pages/login', {
+        error: false,
+        message: "account registered successfully",
+      });
+    })
+    .catch(function (err) {
+      res.render('pages/register', {
+        error: true,
+        message: err,
+      });
+      return console.log(err);
+    });
+});
+//LOGIN:
 app.post('/login', async (req, res) => {
-    res.render('pages/login');
-    //TODO: make login functionality
+  const username = req.body.username;
+  query = `SELECT password FROM users WHERE username = $1;`;
+  db.any(query, [username])
+    .then(async function (data){
+      const password = data[0].password;
+      const passwordInput = req.body.password;
+      const match = await bcrypt.compare(passwordInput, password);
+      if(!match){
+        //password incorrect
+        res.render('pages/login', {
+          error: true,
+          message: "Incorrect username or password.",
+        });
+        return console.log("Incorrect username or password.");
+      }else{
+        //password correct
+        req.session.user = {
+          api_key: process.env.API_KEY,
+        };
+        req.session.save();
+        res.redirect('/map');
+      }
+    })
+    .catch((err) => {
+      res.render('pages/register', {
+        error: true,
+        message: "Could not find account. Create one here.",
+      });
+      
+    });
 });
 
+//END POST SECTION
 
 app.listen(3000);
 console.log('Server is listening on port 3000');
