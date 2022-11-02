@@ -48,8 +48,13 @@ app.use(
 
 //START GET REQUEST SECTION
 app.get('/', (req, res) => {
-    console.log('redirecting!');
-    res.redirect('/login');
+    res.redirect('/home');
+});
+
+app.get('/home', (req, res) => {
+  res.render('pages/home', {
+    session: req.session.user,
+  });
 });
 
 app.get('/login', (req, res) => {
@@ -75,7 +80,9 @@ app.get('/map', (req, res) =>{
     // Default to register page.
     return res.redirect('/register');
   }
-  res.render('pages/map');
+  res.render('pages/map', {
+    session: req.session.user,
+  });
 });
 
 //END GET REQUEST SECTION
