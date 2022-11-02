@@ -104,7 +104,7 @@ app.post('/register', async (req, res) => {
     .catch(function (err) {
       res.render('pages/register', {
         error: true,
-        message: err,
+        message: "username unavailable",
       });
       return console.log(err);
     });
