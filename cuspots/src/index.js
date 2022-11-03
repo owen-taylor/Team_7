@@ -89,7 +89,7 @@ app.get('/map', (req, res) =>{
     .then((spots) => {
       res.render("pages/map", {
         spots,
-        daMap,
+        map: daMap,
       });
     })
     .catch((err) => {
