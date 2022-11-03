@@ -6,6 +6,8 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
 
+
+
 // database configuration
 const dbConfig = {
     host: 'db',
@@ -81,11 +83,22 @@ app.get('/map', (req, res) =>{
     return res.redirect('/register');
   }
   const daMap = "https://maps.googleapis.com/maps/api/staticmap?center=Boulder,CO&zoom=14&size=400x400&key=" + String(req.session.user.api_key);
-  res.render('pages/map', {
-    session: req.session.user,
-    key: req.session.user.api_key,
-    map: daMap,
-  });
+  const all_spots = `SELECT * FROM spots ORDER BY spots.spot_id ASC;`;
+  console.log("here");
+  db.any(all_spots)
+    .then((spots) => {
+      res.render("pages/map", {
+        spots,
+        map: daMap,
+      });
+    })
+    .catch((err) => {
+      res.render("pages/map", {
+        courses: [],
+        error: true,
+        message: err.message,
+      });
+    });
 });
 
 //END GET REQUEST SECTION
@@ -134,6 +147,7 @@ app.post('/login', async (req, res) => {
           api_key: process.env.API_KEY,
         };
         req.session.save();
+        console.log("here");
         res.redirect('/map');
       }
     })

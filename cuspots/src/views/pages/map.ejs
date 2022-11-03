@@ -6,6 +6,26 @@
       <h1>Map page:</h1>
       <img src="<%= locals.map %>">
     </div>
+  <div class="container">
+    <table class="table">
+      <centre>
+        <thead>
+          <tr>
+            <th scope="col">SPOT NAME</th>
+            <th scope="col">AVERAGE RATING</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%spots.forEach(function(spot){ %>
+                <tr>
+                    <td><%= spot.name %></td>
+                    <td><%= spot.avg_rating %></td>
+                </tr>
+            <% }); %> 
+        </tbody>
+      </centre>
+    </table>
+  </div>
 </main>
 
 <%- include ('../partials/footer') %>
