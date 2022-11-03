@@ -9,3 +9,12 @@ Evan's Progress:
     - Moved API key into .env file, then made sure the map still worked.
   11/3:
     - Changed directory structure
+    
+    
+Owen's Progress
+  11/1:
+    - Created the Spots database, Reviews database, users_to_reviews database, and spots_to_reviews database
+    - Added embedded Google map to view CU Boulder Campus
+  11/2:
+    - Created endpoint to return all spots in the spots database
+    - Added code to the map.ejs file to itterate through the spots array and display the name plus average rating
