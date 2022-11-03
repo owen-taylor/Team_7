@@ -4,8 +4,29 @@
 <main>
     <div class="container">
       <h1>Map page:</h1>
-      <img src="https://maps.googleapis.com/maps/api/staticmap?center=Boulder,CO&zoom=14&size=400x400&key=AIzaSyC_Ebun0RofHwcm2O9PsuVE-ujz8vJQNT0">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?center=Boulder,CO&zoom=14&size=400x400&key=AIzaSyBYtoEFUI4QsqnWlzR6jf1Ky60p0g1OwZc">
     </div>
+  <div class="container">
+    <table class="table">
+      <centre>
+        <thead>
+          <tr>
+            <th scope="col">SPOT NAME</th>
+            <th scope="col">AVERAGE RATING</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%spots.forEach(function(spot){ %>
+                <tr>
+                    <td><%= spot.name %></td>
+                    <td><%= spot.avg_rating %></td>
+                </tr>
+            <% }); %> 
+        </tbody>
+      </centre>
+    </table>
+  </div>
+ 
 </main>
 
 <%- include ('../partials/footer') %>

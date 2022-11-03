@@ -6,6 +6,8 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
 
+
+
 // database configuration
 const dbConfig = {
     host: 'db',
@@ -75,7 +77,21 @@ app.get('/map', (req, res) =>{
     // Default to register page.
     return res.redirect('/register');
   }
-  res.render('pages/map');
+  const all_spots = `SELECT * FROM spots ORDER BY spots.spot_id ASC;`;
+  console.log("here");
+  db.any(all_spots)
+    .then((spots) => {
+      res.render("pages/map", {
+        spots,
+      });
+    })
+    .catch((err) => {
+      res.render("pages/map", {
+        courses: [],
+        error: true,
+        message: err.message,
+      });
+    });
 });
 
 //END GET REQUEST SECTION
@@ -124,6 +140,7 @@ app.post('/login', async (req, res) => {
           api_key: process.env.API_KEY,
         };
         req.session.save();
+        console.log("here");
         res.redirect('/map');
       }
     })
