@@ -80,8 +80,11 @@ app.get('/map', (req, res) =>{
     // Default to register page.
     return res.redirect('/register');
   }
+  const daMap = "https://maps.googleapis.com/maps/api/staticmap?center=Boulder,CO&zoom=14&size=400x400&key=" + String(req.session.user.api_key);
   res.render('pages/map', {
     session: req.session.user,
+    key: req.session.user.api_key,
+    map: daMap,
   });
 });
 
