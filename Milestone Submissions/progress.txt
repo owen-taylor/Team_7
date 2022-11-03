@@ -5,3 +5,7 @@ Evan's Progress:
     - Created functioning register, login, and logout pages using session variable
   10/31:
     - Added more user stories to the project board
+  11/2:
+    - Moved API key into .env file, then made sure the map still worked.
+  11/3:
+    - Changed directory structure
