@@ -90,6 +90,7 @@ app.get('/map', (req, res) =>{
       res.render("pages/map", {
         spots,
         map: daMap,
+        session: req.session.user,
       });
     })
     .catch((err) => {
