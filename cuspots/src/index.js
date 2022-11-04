@@ -147,7 +147,6 @@ app.post('/login', async (req, res) => {
           api_key: process.env.API_KEY,
         };
         req.session.save();
-        console.log("here");
         res.redirect('/map');
       }
     })
