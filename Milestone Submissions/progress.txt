@@ -9,6 +9,8 @@ Evan's Progress:
     - Moved API key into .env file, then made sure the map still worked.
   11/3:
     - Changed directory structure
+    - Fixed bug of logout page not showing
+    - Fixed bug of multiple usernames allowed
     
     
 Owen's Progress
