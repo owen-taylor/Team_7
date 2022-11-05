@@ -20,3 +20,6 @@ Owen's Progress
   11/2:
     - Created endpoint to return all spots in the spots database
     - Added code to the map.ejs file to itterate through the spots array and display the name plus average rating
+  11/5:
+    - Created endpoint to return updated map with a merker of a particular spot
+    - Added code to the map.ejs file that allows the user to view a spot location
