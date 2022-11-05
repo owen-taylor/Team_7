@@ -20,6 +20,13 @@
                 <tr>
                     <td><%= spot.name %></td>
                     <td><%= spot.avg_rating %></td>
+                    <form action="/spot_location" method="POST">
+                      <input type="hidden" name="long" value="<%= spot.long %>"/>
+                      <input type="hidden" name="lat" value="<%= spot.lat %>"/>
+                      <td>
+                          <button type="submit" name="course_id" class="btn btn-primary">View Location</button>
+                      </td>
+                  </form>
                 </tr>
             <% }); %> 
         </tbody>

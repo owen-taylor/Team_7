@@ -7,7 +7,9 @@ CREATE TABLE users(
 CREATE TABLE spots(
     spot_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    avg_rating FLOAT
+    avg_rating FLOAT,
+    long FLOAT,
+    lat FLOAT
 );
 
 CREATE TABLE ratings(
