@@ -82,9 +82,30 @@ app.get('/map', (req, res) =>{
     // Default to register page.
     return res.redirect('/register');
   }
-  const daMap = "https://maps.googleapis.com/maps/api/staticmap?center=Boulder,CO&zoom=14&size=400x400&key=" + String(req.session.user.api_key);
+  const daMap = "https://maps.googleapis.com/maps/api/staticmap?center=40.00790356892552,-105.26975530161658&zoom=16&size=2000x400&maptype=hybrid&key=" + String(req.session.user.api_key);
   const all_spots = `SELECT * FROM spots ORDER BY spots.spot_id ASC;`;
   console.log("here");
+  db.any(all_spots)
+    .then((spots) => {
+      res.render("pages/map", {
+        spots,
+        map: daMap,
+        session: req.session.user,
+      });
+    })
+    .catch((err) => {
+      res.render("pages/map", {
+        courses: [],
+        error: true,
+        message: err.message,
+      });
+    });
+});
+
+app.post('/spot_location', (req, res) =>{
+  const daMap = "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=2000x400&maptype=satellite&markers=color:red%7C"
+  + String(req.body.lat) + "," + String(req.body.long)+ "&key=" + String(req.session.user.api_key);
+  const all_spots = `SELECT * FROM spots ORDER BY spots.spot_id ASC;`;
   db.any(all_spots)
     .then((spots) => {
       res.render("pages/map", {
