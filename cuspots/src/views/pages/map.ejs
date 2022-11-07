@@ -2,10 +2,42 @@
 <%- include ('../partials/menu') %>
 
 <main>
-    <div class="container">
-      <h1>Map page:</h1>
-      <img src="<%= locals.map %>">
-    </div>
+  <div class="container">
+    <h1>Map page:</h1>
+    <div id="map" style="width:500px;height:380px;"></div>
+    <script>
+      var map;
+  
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+            lat: 40.00790356892552,
+            lng: -105.26975530161658
+          },
+          zoom: 16
+        });
+      }
+      function changeMap(latInput, longInput){
+        const latitude = parseFloat(latInput);
+        const longitude = parseFloat(longInput);
+        const location = { lat: latitude, lng: longitude };
+        map = new google.maps.Map(document.getElementById('map'), {
+
+          center: {
+            lat: latitude,
+            lng: longitude
+          },
+          zoom: 16
+        });
+        const marker = new google.maps.Marker({
+          position: location,
+          map: map,
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initMap" async defer>
+    </script>
+  </div>
   <div class="container">
     <table class="table">
       <centre>
@@ -20,14 +52,10 @@
                 <tr>
                     <td><%= spot.name %></td>
                     <td><%= spot.avg_rating %></td>
-                    <form action="/spot_location" method="POST">
-                      <input type="hidden" name="long" value="<%= spot.long %>"/>
-                      <input type="hidden" name="lat" value="<%= spot.lat %>"/>
-                      <td>
-                          <button type="submit" name="course_id" class="btn btn-primary">View Location</button>
-                      </td>
-                  </form>
-                </tr>
+                    <td>
+                      <button class="button btn-primary" onClick='changeMap("<%= spot.lat %>","<%= spot.long %>")'>View Location</button>
+                    </td>
+                  </tr>
             <% }); %> 
         </tbody>
       </centre>
