@@ -11,6 +11,8 @@ Evan's Progress:
     - Changed directory structure
     - Fixed bug of logout page not showing
     - Fixed bug of multiple usernames allowed
+  11/6:
+    - Made map interactive with clientside javascript, then merged that to main
     
     
 Owen's Progress
@@ -23,3 +25,7 @@ Owen's Progress
   11/5:
     - Created endpoint to return updated map with a merker of a particular spot
     - Added code to the map.ejs file that allows the user to view a spot location
+  11/7:
+    - Created endpoint to insert spots into spots database
+    - Created modal to add spot
+    - Added functionality to add a spot
