@@ -197,6 +197,22 @@ app.post('/login', async (req, res) => {
     });
 });
 
+app.post('/add_spot', async (req, res) => {
+  const spot_name = req.body.spot_input;
+  const rating = req.body.rating_input;
+  const latitude = req.body.latitude_input;
+  const longitude = req.body.longitude_input;
+  const query = `INSERT INTO spots (name, avg_rating, lat, long) VALUES ('${spot_name}', ${rating}, ${latitude}, ${longitude});`;
+  db.any(query)
+    .then(async function (data) {
+        res.redirect('/map');
+    })
+    .catch(async function (err) {
+      res.render('/map');
+      return console.log(err);
+    });
+});
+
 //END POST SECTION
 
 app.listen(3000);

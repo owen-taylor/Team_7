@@ -41,6 +41,50 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initMap" async defer>
     </script>
   </div>
+
+  <!--Modal to add spot-->
+  <div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Add Spot
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Spot</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/add_spot" method="POST">
+              <div class="modal-body">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Spot Name</span>
+                  <input name="spot_input" type="text" id="spot_input" class="form-control">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Rating</span>
+                <input name="rating_input" type="text" id="rating_input" class="form-control">
+              </div>
+              <div class="input-group mb-3">
+                  <span class="input-group-text">Latitude</span>
+                  <input name="latitude_input" type="text" id="latitude_input" class="form-control">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Longitude</span>
+                <input name="longitude_input" type="text" id="longitude_input" class="form-control">
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button id="submit_button" class="btn btn-primary" type="submit">Create New Spot</button>
+              </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--List of spots-->
   <div class="container">
     <table class="table">
       <centre>
@@ -63,46 +107,6 @@
         </tbody>
       </centre>
     </table>
-    <div class="container">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Add Spot
-      </button>
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add Spot</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="input-group mb-3">
-                <span class="input-group-text">Spot Name</span>
-                <input type="text" id="spot_input" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Rating</span>
-              <input type="text" id="rating_input" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Latitude</span>
-                <input type="text" id="latitude_input" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Longitude</span>
-              <input type="text" id="longitude_input" class="form-control">
-            </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="close_button" class="btn btn-secondary" required onclick="close_modal()" data-bs-dismiss="modal">Close</button>
-              <button id="submit_button" class="btn btn-primary" type="submit">Create New Spot</button>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div><%- include ('../partials/message') %></div>
   </div>
 </main>
