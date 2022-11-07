@@ -11,6 +11,8 @@ Evan's Progress:
     - Changed directory structure
     - Fixed bug of logout page not showing
     - Fixed bug of multiple usernames allowed
+  11/6:
+    - Made map interactive with clientside javascript, then merged that to main
     
     
 Owen's Progress
