@@ -20,6 +20,34 @@
           zoom: 16
         });
       }
+      function initModalMap(){
+        var marker;
+        var modalmap;
+        modalmap = new google.maps.Map(document.getElementById('mapmodal'), {
+          center: {
+            lat: 40.00790356892552,
+            lng: -105.26975530161658
+          },
+          zoom: 16
+        });
+        modalmap.addListener("click", (e) => {
+          if(marker){
+            marker.setMap(null);
+          }
+          marker = placeMarker(e.latLng, modalmap);
+          document.getElementById('latitude_input').setAttribute('value', e.latLng.lat());
+          document.getElementById('longitude_input').setAttribute('value', e.latLng.lng());
+        });
+      }
+      function placeMarker(latLng, modalmap){
+        var marker1;
+        marker1 = new google.maps.Marker({
+          position: latLng,
+          map: modalmap,
+        });
+        return marker1;
+      }
+
       function changeMap(latInput, longInput){
         const latitude = parseFloat(latInput);
         const longitude = parseFloat(longInput);
@@ -32,7 +60,7 @@
           },
           zoom: 16
         });
-        const marker = new google.maps.Marker({
+        const marker2 = new google.maps.Marker({
           position: location,
           map: map,
         });
@@ -58,6 +86,9 @@
           </div>
           <form action="/add_spot" method="POST">
               <div class="modal-body">
+                <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initModalMap" async defer>
+                </script>
+                <div id="mapmodal" style="width:500px;height:380px;"></div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Spot Name</span>
                   <input name="spot_input" type="text" id="spot_input" class="form-control">
