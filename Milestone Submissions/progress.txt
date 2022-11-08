@@ -29,3 +29,5 @@ Owen's Progress
     - Created endpoint to insert spots into spots database
     - Created modal to add spot
     - Added functionality to add a spot
+  11/7:
+    - Created Modal to add a review to a spot
