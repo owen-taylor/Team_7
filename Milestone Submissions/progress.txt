@@ -13,6 +13,8 @@ Evan's Progress:
     - Fixed bug of multiple usernames allowed
   11/6:
     - Made map interactive with clientside javascript, then merged that to main
+  11/8:
+    - Made map modal in add-spots, can now add a spot by picking a location on map and adding name
     
     
 Owen's Progress
