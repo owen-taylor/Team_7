@@ -10,7 +10,7 @@
     <div id="map" style="width:500px;height:380px;"></div>
     <script>
       var map;
-  
+      var modalmap;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {
@@ -22,7 +22,6 @@
       }
       function initModalMap(){
         var marker;
-        var modalmap;
         modalmap = new google.maps.Map(document.getElementById('mapmodal'), {
           center: {
             lat: 40.00790356892552,
@@ -39,11 +38,11 @@
           document.getElementById('longitude_input').setAttribute('value', e.latLng.lng());
         });
       }
-      function placeMarker(latLng, modalmap){
+      function placeMarker(latLng, modalmapl){
         var marker1;
         marker1 = new google.maps.Marker({
           position: latLng,
-          map: modalmap,
+          map: modalmapl,
         });
         return marker1;
       }
@@ -64,6 +63,9 @@
           position: location,
           map: map,
         });
+      }
+      function deletemodalmap(){
+        modalmap = null;
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initMap" async defer>
@@ -88,7 +90,7 @@
               <div class="modal-body">
                 <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initModalMap" async defer>
                 </script>
-                <div id="mapmodal" style="width:500px;height:380px;"></div>
+                <div id="mapmodal" style="width:400px;height:380px;"></div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Spot Name</span>
                   <input name="spot_input" type="text" id="spot_input" class="form-control">
@@ -107,7 +109,7 @@
               </div>
               </div>
               <div class="modal-footer">
-                <button id="submit_button" class="btn btn-primary" type="submit">Create New Spot</button>
+                <button id="submit_button" class="btn btn-primary" type="submit" onclick="deletemodalmap()">Create New Spot</button>
               </div>
           </form>
           </div>
