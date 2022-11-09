@@ -24,7 +24,7 @@ Contributors:
   
 Technology Stack:
   - Front-end: HTML, CSS, and EJS templating.
-  - Back-end: PostgreSQL database. Express.js and Node.js framework. We use the Google Maps API.
+  - Back-end: PostgreSQL database. Express and Node.js framework. We use the Google Maps API.
 
 Prerequisites for Project:
   - none
@@ -36,7 +36,7 @@ Instructions to run locally:
   - if all goes smoothly, enter: "http://localhost:3000/" into your browser
 
 How to run the tests:
-  -TODO:
+  - See PDF in milestone submissions
   
 Link to deployed application:
   -TODO:
