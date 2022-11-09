@@ -1,0 +1,31 @@
+Things to fix:
+  -Add user criteria
+  -Add Release Notes
+Goals for this week:
+  -Make the UI look nicer
+  -Add elements to the home page
+  -finish review spots functionality
+  
+Owen T
+  -Things I have done this week
+    -Created functionality to list all spots in the database
+    -Created view spots functionality where you can view spot locaiton on a map
+    -Created add spots functionality to add a spot to the spots database
+  -Next week I will do
+    -Finish up review spots functionality
+Evan
+  -Things I have done this week
+    -Added interactive map functionality to main map page
+    -Added ability to retreave spot coordinates from interactive map
+    -Bugg fixes
+  -Next week I will do
+    -Change the UI to look nicer
+
+Saragam
+  -Things I have done this week
+    -Working on front end using css
+  -Next week I will do
+    -Continue working on front end with a focus on home page
+ 
+Owen N
+  -N/A
