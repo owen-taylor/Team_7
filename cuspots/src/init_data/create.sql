@@ -14,19 +14,7 @@ CREATE TABLE spots(
 
 CREATE TABLE ratings(
     rating_id SERIAL PRIMARY KEY NOT NULL,
-    rating FLOAT
-);
-
-CREATE TABLE spots_to_reviews(
+    rating FLOAT,
     spot_id INT NOT NULL,
-    rating_id INT NOT NULL,
-    FOREIGN KEY (spot_id) REFERENCES spots (spot_id),
-    FOREIGN KEY (rating_id) REFERENCES ratings (rating_id)
-);
-
-CREATE TABLE users_to_reviews(
-    user_id INT NOT NULL,
-    rating_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (rating_id) REFERENCES ratings (rating_id)
+    user_id INT NOT NULL
 );

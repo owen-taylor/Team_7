@@ -18,7 +18,7 @@ const dbConfig = {
 };
 
 const db = pgp(dbConfig);
-
+const spot_id = 0;
 // test your database
 db.connect()
   .then(obj => {
@@ -150,7 +150,7 @@ app.post('/register', async (req, res) => {
 //LOGIN:
 app.post('/login', async (req, res) => {
   const username = req.body.username;
-  query = `SELECT password FROM users WHERE username = $1;`;
+  query = `SELECT * FROM users WHERE username = $1;`;
   db.any(query, [username])
     .then(async function (data){
       const password = data[0].password;
@@ -167,6 +167,8 @@ app.post('/login', async (req, res) => {
         //password correct
         req.session.user = {
           api_key: process.env.API_KEY,
+          username: username,
+          user_id: data[0].user_id,
         };
         req.session.save();
         res.redirect('/map');
