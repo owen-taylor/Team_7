@@ -5,7 +5,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE spots(
-    spot_id SERIAL PRIMARY KEY,
+    spot_id SERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(50),
     avg_rating FLOAT,
     long FLOAT,
