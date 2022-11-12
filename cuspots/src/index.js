@@ -125,7 +125,6 @@ app.post('/spot_location', (req, res) =>{
 
 app.post('/rate_spot', (req, res) =>{
   spot_id = req.body.spot_id;
-  console.log(spot_id);
   const new_rating = `INSERT INTO ratings (rating, spot_id, user_id) VALUES (${req.body.value}, ${spot_id}, ${req.session.user.user_id});`;
   db.any(new_rating)
     .then((rating) => {
@@ -141,7 +140,6 @@ app.post('/rate_spot', (req, res) =>{
 });
 
 app.get('/update_spot_ratings', (req, res) =>{
-  console.log(spot_id);
   const update_avg_rating = `UPDATE spots SET avg_rating = (SELECT AVG(rating) FROM ratings WHERE ratings.spot_id = ${spot_id}) WHERE spots.spot_id = ${spot_id};`;
   db.any(update_avg_rating)
     .then((r) => {
@@ -218,10 +216,9 @@ app.post('/login', async (req, res) => {
 
 app.post('/add_spot', async (req, res) => {
   const spot_name = req.body.spot_input;
-  const rating = req.body.rating_input;
   const latitude = req.body.latitude_input;
   const longitude = req.body.longitude_input;
-  const query = `INSERT INTO spots (name, avg_rating, lat, long) VALUES ('${spot_name}', ${rating}, ${latitude}, ${longitude});`;
+  const query = `INSERT INTO spots (name, lat, long) VALUES ('${spot_name}', ${latitude}, ${longitude});`;
   db.any(query)
     .then(async function (data) {
         res.redirect('/map');
