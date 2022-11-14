@@ -96,16 +96,10 @@
                   <input name="spot_input" type="text" id="spot_input" class="form-control">
               </div>
               <div class="input-group mb-3">
-                <span class="input-group-text">Rating</span>
-                <input name="rating_input" type="text" id="rating_input" class="form-control">
+                  <input name="latitude_input" type="hidden" id="latitude_input" class="form-control">
               </div>
               <div class="input-group mb-3">
-                  <span class="input-group-text">Latitude</span>
-                  <input name="latitude_input" type="text" id="latitude_input" class="form-control">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text">Longitude</span>
-                <input name="longitude_input" type="text" id="longitude_input" class="form-control">
+                <input name="longitude_input" type="hidden" id="longitude_input" class="form-control">
               </div>
               </div>
               <div class="modal-footer">
@@ -117,6 +111,70 @@
       </div>
     </div>
   </div>
+
+  <!--Rate Modal-->
+  <div class="container">
+    <div class="modal" id="rate_modal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rate_modal_label">Add Spot</h5>
+            <button type="button" class="btn-close" required onclick="close_modal()" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="/rate_spot" method="POST">
+              <div class="modal-body">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r1" value="1">
+                <label class="form-check-label" for="inlineRadio1">1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r2" value="2">
+                <label class="form-check-label" for="inlineRadio2">2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r3" value="3">
+                <label class="form-check-label" for="inlineRadio3">3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r4" value="4">
+                <label class="form-check-label" for="inlineRadio1">4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r5" value="5">
+                <label class="form-check-label" for="inlineRadio2">5</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r6" value="6">
+                <label class="form-check-label" for="inlineRadio3">6</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r7" value="7">
+                <label class="form-check-label" for="inlineRadio1">7</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r8" value="8">
+                <label class="form-check-label" for="inlineRadio2">8</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r9" value="9">
+                <label class="form-check-label" for="inlineRadio3">9</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="value" id="r10" value="10">
+                <label class="form-check-label" for="inlineRadio3">10</label>
+              </div>
+              <input type="hidden" id="spot_id_id" name="spot_id">
+              </div>
+              <div class="modal-footer">
+                <button id="submit_button" class="btn btn-primary" type="submit">Rate Spot</button>
+              </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!--List of spots-->
   <div class="container">
     <table class="table">
@@ -135,11 +193,25 @@
                     <td>
                       <button class="button btn-primary" onClick='changeMap("<%= spot.lat %>","<%= spot.long %>")'>View Location</button>
                     </td>
+                    <td>
+                      <button class="btn btn-primary" onclick='open_event_modal("<%= spot.spot_id %>")'>Rate Spot</button>
+                    </td>
                 </tr>
             <% }); %> 
         </tbody>
       </centre>
     </table>
+    
+      <!--Open Modal Function-->
+      <script>
+        function open_event_modal(id) {
+            document.getElementById("spot_id_id").value=id;
+            document.getElementById("rate_modal").style.display = "block";
+          }
+        function close_modal(){
+          document.getElementById("rate_modal").style.display = "none";
+        }
+      </script>
     <div><%- include ('../partials/message') %></div>
   </div>
 </main>

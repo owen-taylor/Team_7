@@ -18,7 +18,7 @@ const dbConfig = {
 };
 
 const db = pgp(dbConfig);
-
+let spot_id = 0;
 // test your database
 db.connect()
   .then(obj => {
@@ -123,6 +123,37 @@ app.post('/spot_location', (req, res) =>{
     });
 });
 
+app.post('/rate_spot', (req, res) =>{
+  spot_id = req.body.spot_id;
+  const new_rating = `INSERT INTO ratings (rating, spot_id, user_id) VALUES (${req.body.value}, ${spot_id}, ${req.session.user.user_id});`;
+  db.any(new_rating)
+    .then((rating) => {
+      res.redirect("/update_spot_ratings");
+    })
+    .catch((err) => {
+      res.render("pages/map", {
+        courses: [],
+        error: true,
+        message: err.message,
+      });
+    });
+});
+
+app.get('/update_spot_ratings', (req, res) =>{
+  const update_avg_rating = `UPDATE spots SET avg_rating = (SELECT AVG(rating) FROM ratings WHERE ratings.spot_id = ${spot_id}) WHERE spots.spot_id = ${spot_id};`;
+  db.any(update_avg_rating)
+    .then((r) => {
+      res.redirect("/map");
+    })
+    .catch((err) => {
+      res.render("pages/map", {
+        courses: [],
+        error: true,
+        message: err.message,
+      });
+    });
+});
+
 //END GET REQUEST SECTION
 
 
@@ -150,7 +181,7 @@ app.post('/register', async (req, res) => {
 //LOGIN:
 app.post('/login', async (req, res) => {
   const username = req.body.username;
-  query = `SELECT password FROM users WHERE username = $1;`;
+  query = `SELECT * FROM users WHERE username = $1;`;
   db.any(query, [username])
     .then(async function (data){
       const password = data[0].password;
@@ -167,6 +198,8 @@ app.post('/login', async (req, res) => {
         //password correct
         req.session.user = {
           api_key: process.env.API_KEY,
+          username: username,
+          user_id: data[0].user_id,
         };
         req.session.save();
         res.redirect('/map');
@@ -183,10 +216,9 @@ app.post('/login', async (req, res) => {
 
 app.post('/add_spot', async (req, res) => {
   const spot_name = req.body.spot_input;
-  const rating = req.body.rating_input;
   const latitude = req.body.latitude_input;
   const longitude = req.body.longitude_input;
-  const query = `INSERT INTO spots (name, avg_rating, lat, long) VALUES ('${spot_name}', ${rating}, ${latitude}, ${longitude});`;
+  const query = `INSERT INTO spots (name, lat, long) VALUES ('${spot_name}', ${latitude}, ${longitude});`;
   db.any(query)
     .then(async function (data) {
         res.redirect('/map');
