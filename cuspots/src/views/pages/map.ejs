@@ -15,8 +15,8 @@
         </div>
         <form action="/add_spot" method="POST">
             <div class="modal-body">
-              <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initModalMap" async defer>
-              </script>
+              <!--<script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initModalMap" async defer>
+              </script> -->
               <div id="mapmodal" style="width:400px;height:380px;"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text">Spot Name</span>
@@ -108,7 +108,7 @@
 </div>
 <div id="sideBar" class="sidenav">
   <button type="button" class="closebtn" onclick="closeNavBar()">&times;</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="initModalMap();">
     Add Spot
   </button>
   <table class="table">
@@ -121,6 +121,7 @@
       </thead>
       <tbody>
           <%spots.forEach(function(spot){ %>
+            <% spot.avg_rating = Math.round(spot.avg_rating); %>
               <tr>
                   <td><%= spot.name %></td>
                   <td><%= spot.avg_rating %></td>
@@ -159,6 +160,7 @@
       },
       zoom: 16
     });
+    openNavBar();
   }
   function initModalMap(){
     var marker;
@@ -212,10 +214,12 @@
   //START SIDE NAVIGATION BAR FUNCTIONS:
   function openNavBar(){
     document.getElementById("sideBar").style.width = "400px";
+    document.getElementById("sideButton").style.visibility = "hidden";
   }
 
   function closeNavBar(){
     document.getElementById("sideBar").style.width = "0";
+    document.getElementById("sideButton").style.visibility = "visible";
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initMap" async defer>
