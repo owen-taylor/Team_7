@@ -1,3 +1,4 @@
+11-7:
 Decsisions Made:
 -We are moving forward with the interactive map. I should give us more freedom in the future to add features.
       -Alternative option was to continue using static maps. There is no real upside to this except for cost(but we do so little calls it doesn't matter)
@@ -5,3 +6,12 @@ Decsisions Made:
       -May end up using "what three words" api to make user input of location easier.
 -Displaying Instructions and user information on the homepage.
 -Adding spots to the database will be done using a modal.
+
+11-14:
+Decisions Made:
+- UI still needs minor improvements
+- we need a home page
+- APOSTROPHE GLITCH IN ADD SPOTS
+Follow up items:
+- Need a project report / presentation. Evan can do this over break
+
