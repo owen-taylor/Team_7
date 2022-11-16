@@ -1,3 +1,4 @@
 1. We need to delete old branches
 2. Close old user stories
 3. Sit down as a group to read project guide: check off all elements
+4. 
