@@ -33,3 +33,4 @@ Owen's Progress
     - Added functionality to add a spot
   11/7:
     - Created Modal to add a review to a spot
+    -Added review spot functionality
