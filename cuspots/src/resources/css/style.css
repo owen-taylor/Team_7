@@ -1,0 +1,27 @@
+html,
+body{
+    background-color: #a3b18a !important;
+}
+header{
+    background-color: #588157;
+    border: none;
+}
+#Login{
+    background-color:#588157 !important;
+    color:#dad7cd !important;
+    border-color:#3a5a40 !important;
+}
+#Register{
+    background-color:#588157 !important;
+    color:#dad7cd !important;
+    border-color:#3a5a40 !important;
+}
+
+/*
+COLOR PALLETTE: FROM LIGHT TO DARK:
+dad7cd
+a3b18a
+588157
+3a5a40
+344e41
+*/

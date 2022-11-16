@@ -1,24 +1,45 @@
-/* The side navigation menu */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    right: 0;
-    background-color: #06487a;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
 
-/* Position and style the close button (top right corner) */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #a3b18a;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+/*
+COLOR PALLETTE: FROM LIGHT TO DARK:
+dad7cd
+a3b18a
+588157
+3a5a40
+344e41
+*/
 .sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    background-color: #3a5a40;
+    color: #dad7cd;
+}
+#openNavButton {
+    border: none;
+    background-color:#a3b18a;
+    color: #dad7cd;
+    width:100%;
+    height:100%;
+}
+#addspotbtn{
+    right: 0;
+    background-color:#588157 !important;
+    color:#dad7cd !important;
+    border-color:#3a5a40 !important;
 }
 #sideButton {
     position: absolute;
@@ -26,8 +47,13 @@
     top: 50%;
     right: 0px;
     z-index: 10;
+    width:50px;
+    height:50px;
 }
-
+header{
+    background-color: #588157;
+    border: none;
+}
 #map {
     height: 100%;
     width: 100%;
@@ -38,4 +64,11 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #a3b18a !important;
+}
+
+#modalbtn{
+    background-color:#588157 !important;
+    color:#dad7cd !important;
+    border-color:#3a5a40 !important;
 }

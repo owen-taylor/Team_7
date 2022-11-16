@@ -15,8 +15,6 @@
         </div>
         <form action="/add_spot" method="POST">
             <div class="modal-body">
-              <!--<script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initModalMap" async defer>
-              </script> -->
               <div id="mapmodal" style="width:400px;height:380px;"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text">Spot Name</span>
@@ -104,11 +102,11 @@
 
 <!--List of spots-->
 <div id="sideButton">
-  <button onclick="openNavBar()">open</button>
+  <button onclick="openNavBar()" class="btn" id="openNavButton"><i class="large material-icons">arrow_back_ios</i></button>
 </div>
 <div id="sideBar" class="sidenav">
-  <button type="button" class="closebtn" onclick="closeNavBar()">&times;</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="initModalMap();">
+  <button type="button" class="closebtn" onclick="closeNavBar()"><i class="large material-icons">close</i></button>
+  <button id="addspotbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="initModalMap();">
     Add Spot
   </button>
   <table class="table">
@@ -126,10 +124,10 @@
                   <td><%= spot.name %></td>
                   <td><%= spot.avg_rating %></td>
                   <td>
-                    <button class="button btn-primary" onClick='changeMap("<%= spot.lat %>","<%= spot.long %>")'>View Location</button>
+                    <button id="modalbtn" class="button btn-primary" onClick='changeMap("<%= spot.lat %>","<%= spot.long %>")'>View Location</button>
                   </td>
                   <td>
-                    <button class="btn btn-primary" onclick='open_event_modal("<%= spot.spot_id %>")'>Rate Spot</button>
+                    <button id="modalbtn" class="btn btn-primary" onclick='open_event_modal("<%= spot.spot_id %>")'>Rate Spot</button>
                   </td>
               </tr>
           <% }); %> 
