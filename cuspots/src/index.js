@@ -45,7 +45,7 @@ app.use(
       extended: true,
     })
 );
-
+app.use(express.static(__dirname + '/resources'));
 //END OF USE COMMANDS SECTION
 
 //START GET REQUEST SECTION
@@ -84,7 +84,6 @@ app.get('/map', (req, res) =>{
     return res.redirect('/register');
   }
   const all_spots = `SELECT * FROM spots ORDER BY spots.spot_id ASC;`;
-  console.log("here");
   db.any(all_spots)
     .then((spots) => {
       res.render("pages/map", {

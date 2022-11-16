@@ -1,219 +1,226 @@
-<%- include ('../partials/header') %>
+<%- include ('../partials/mapheader') %>
 <%- include ('../partials/menu') %>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<main>
-  <div class="container">
-    <h1>Map page:</h1>
-    <div id="map" style="width:500px;height:380px;"></div>
+<div id="map"></div>
+
+<!--Modal to add spot-->
+<div class="container">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Spot</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/add_spot" method="POST">
+            <div class="modal-body">
+              <div id="mapmodal" style="width:400px;height:380px;"></div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Spot Name</span>
+                <input name="spot_input" type="text" id="spot_input" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input name="latitude_input" type="hidden" id="latitude_input" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+              <input name="longitude_input" type="hidden" id="longitude_input" class="form-control">
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button id="submit_button" class="btn btn-primary" type="submit" onclick="deletemodalmap()">Create New Spot</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Rate Modal-->
+<div class="container">
+  <div class="modal" id="rate_modal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rate_modal_label">Add Spot</h5>
+          <button type="button" class="btn-close" required onclick="close_modal()" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/rate_spot" method="POST">
+            <div class="modal-body">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r1" value="1">
+              <label class="form-check-label" for="inlineRadio1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r2" value="2">
+              <label class="form-check-label" for="inlineRadio2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r3" value="3">
+              <label class="form-check-label" for="inlineRadio3">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r4" value="4">
+              <label class="form-check-label" for="inlineRadio1">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r5" value="5">
+              <label class="form-check-label" for="inlineRadio2">5</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r6" value="6">
+              <label class="form-check-label" for="inlineRadio3">6</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r7" value="7">
+              <label class="form-check-label" for="inlineRadio1">7</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r8" value="8">
+              <label class="form-check-label" for="inlineRadio2">8</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r9" value="9">
+              <label class="form-check-label" for="inlineRadio3">9</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="value" id="r10" value="10">
+              <label class="form-check-label" for="inlineRadio3">10</label>
+            </div>
+            <input type="hidden" id="spot_id_id" name="spot_id">
+            </div>
+            <div class="modal-footer">
+              <button id="submit_button" class="btn btn-primary" type="submit">Rate Spot</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--List of spots-->
+<div id="sideButton">
+  <button onclick="openNavBar()" class="btn" id="openNavButton"><i class="large material-icons">arrow_back_ios</i></button>
+</div>
+<div id="sideBar" class="sidenav">
+  <button type="button" class="closebtn" onclick="closeNavBar()"><i class="large material-icons">close</i></button>
+  <button id="addspotbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="initModalMap();">
+    Add Spot
+  </button>
+  <table class="table">
+    <centre>
+      <thead>
+        <tr>
+          <th scope="col">SPOT NAME</th>
+          <th scope="col">AVERAGE RATING</th>
+        </tr>
+      </thead>
+      <tbody>
+          <%spots.forEach(function(spot){ %>
+            <% spot.avg_rating = Math.round(spot.avg_rating); %>
+              <tr>
+                  <td><%= spot.name %></td>
+                  <td><%= spot.avg_rating %></td>
+                  <td>
+                    <button id="modalbtn" class="button btn-primary" onClick='changeMap("<%= spot.lat %>","<%= spot.long %>")'>View Location</button>
+                  </td>
+                  <td>
+                    <button id="modalbtn" class="btn btn-primary" onclick='open_event_modal("<%= spot.spot_id %>")'>Rate Spot</button>
+                  </td>
+              </tr>
+          <% }); %> 
+      </tbody>
+    </centre>
+  </table>
+  
+    <!--Open Modal Function-->
     <script>
-      var map;
-      var modalmap;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {
-            lat: 40.00790356892552,
-            lng: -105.26975530161658
-          },
-          zoom: 16
-        });
-      }
-      function initModalMap(){
-        var marker;
-        modalmap = new google.maps.Map(document.getElementById('mapmodal'), {
-          center: {
-            lat: 40.00790356892552,
-            lng: -105.26975530161658
-          },
-          zoom: 16
-        });
-        modalmap.addListener("click", (e) => {
-          if(marker){
-            marker.setMap(null);
-          }
-          marker = placeMarker(e.latLng, modalmap);
-          document.getElementById('latitude_input').setAttribute('value', e.latLng.lat());
-          document.getElementById('longitude_input').setAttribute('value', e.latLng.lng());
-        });
-      }
-      function placeMarker(latLng, modalmapl){
-        var marker1;
-        marker1 = new google.maps.Marker({
-          position: latLng,
-          map: modalmapl,
-        });
-        return marker1;
-      }
-
-      function changeMap(latInput, longInput){
-        const latitude = parseFloat(latInput);
-        const longitude = parseFloat(longInput);
-        const location = { lat: latitude, lng: longitude };
-        map = new google.maps.Map(document.getElementById('map'), {
-
-          center: {
-            lat: latitude,
-            lng: longitude
-          },
-          zoom: 16
-        });
-        const marker2 = new google.maps.Marker({
-          position: location,
-          map: map,
-        });
-      }
-      function deletemodalmap(){
-        modalmap = null;
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initMap" async defer>
-    </script>
-  </div>
-
-  <!--Modal to add spot-->
-  <div class="container">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Add Spot
-    </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Spot</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="/add_spot" method="POST">
-              <div class="modal-body">
-                <script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initModalMap" async defer>
-                </script>
-                <div id="mapmodal" style="width:400px;height:380px;"></div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text">Spot Name</span>
-                  <input name="spot_input" type="text" id="spot_input" class="form-control">
-              </div>
-              <div class="input-group mb-3">
-                  <input name="latitude_input" type="hidden" id="latitude_input" class="form-control">
-              </div>
-              <div class="input-group mb-3">
-                <input name="longitude_input" type="hidden" id="longitude_input" class="form-control">
-              </div>
-              </div>
-              <div class="modal-footer">
-                <button id="submit_button" class="btn btn-primary" type="submit" onclick="deletemodalmap()">Create New Spot</button>
-              </div>
-          </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--Rate Modal-->
-  <div class="container">
-    <div class="modal" id="rate_modal" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="rate_modal_label">Add Spot</h5>
-            <button type="button" class="btn-close" required onclick="close_modal()" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="/rate_spot" method="POST">
-              <div class="modal-body">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r1" value="1">
-                <label class="form-check-label" for="inlineRadio1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r2" value="2">
-                <label class="form-check-label" for="inlineRadio2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r3" value="3">
-                <label class="form-check-label" for="inlineRadio3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r4" value="4">
-                <label class="form-check-label" for="inlineRadio1">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r5" value="5">
-                <label class="form-check-label" for="inlineRadio2">5</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r6" value="6">
-                <label class="form-check-label" for="inlineRadio3">6</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r7" value="7">
-                <label class="form-check-label" for="inlineRadio1">7</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r8" value="8">
-                <label class="form-check-label" for="inlineRadio2">8</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r9" value="9">
-                <label class="form-check-label" for="inlineRadio3">9</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="value" id="r10" value="10">
-                <label class="form-check-label" for="inlineRadio3">10</label>
-              </div>
-              <input type="hidden" id="spot_id_id" name="spot_id">
-              </div>
-              <div class="modal-footer">
-                <button id="submit_button" class="btn btn-primary" type="submit">Rate Spot</button>
-              </div>
-          </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--List of spots-->
-  <div class="container">
-    <table class="table">
-      <centre>
-        <thead>
-          <tr>
-            <th scope="col">SPOT NAME</th>
-            <th scope="col">AVERAGE RATING</th>
-          </tr>
-        </thead>
-        <tbody>
-            <%spots.forEach(function(spot){ %>
-                <tr>
-                    <td><%= spot.name %></td>
-                    <td><%= spot.avg_rating %></td>
-                    <td>
-                      <button class="button btn-primary" onClick='changeMap("<%= spot.lat %>","<%= spot.long %>")'>View Location</button>
-                    </td>
-                    <td>
-                      <button class="btn btn-primary" onclick='open_event_modal("<%= spot.spot_id %>")'>Rate Spot</button>
-                    </td>
-                </tr>
-            <% }); %> 
-        </tbody>
-      </centre>
-    </table>
-    
-      <!--Open Modal Function-->
-      <script>
-        function open_event_modal(id) {
-            document.getElementById("spot_id_id").value=id;
-            document.getElementById("rate_modal").style.display = "block";
-          }
-        function close_modal(){
-          document.getElementById("rate_modal").style.display = "none";
+      function open_event_modal(id) {
+          document.getElementById("spot_id_id").value=id;
+          document.getElementById("rate_modal").style.display = "block";
         }
-      </script>
-    <div><%- include ('../partials/message') %></div>
-  </div>
-</main>
+      function close_modal(){
+        document.getElementById("rate_modal").style.display = "none";
+      }
+    </script>
+  <div><%- include ('../partials/message') %></div>
+</div>
+<script>
+  var map;
+  var modalmap;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: 40.00790356892552,
+        lng: -105.26975530161658
+      },
+      zoom: 16
+    });
+    openNavBar();
+  }
+  function initModalMap(){
+    var marker;
+    modalmap = new google.maps.Map(document.getElementById('mapmodal'), {
+      center: {
+        lat: 40.00790356892552,
+        lng: -105.26975530161658
+      },
+      zoom: 16
+    });
+    modalmap.addListener("click", (e) => {
+      if(marker){
+        marker.setMap(null);
+      }
+      marker = placeMarker(e.latLng, modalmap);
+      document.getElementById('latitude_input').setAttribute('value', e.latLng.lat());
+      document.getElementById('longitude_input').setAttribute('value', e.latLng.lng());
+    });
+  }
+  function placeMarker(latLng, modalmapl){
+    var marker1;
+    marker1 = new google.maps.Marker({
+      position: latLng,
+      map: modalmapl,
+    });
+    return marker1;
+  }
+
+  function changeMap(latInput, longInput){
+    const latitude = parseFloat(latInput);
+    const longitude = parseFloat(longInput);
+    const location = { lat: latitude, lng: longitude };
+    map = new google.maps.Map(document.getElementById('map'), {
+
+      center: {
+        lat: latitude,
+        lng: longitude
+      },
+      zoom: 16
+    });
+    const marker2 = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }
+  function deletemodalmap(){
+    modalmap = null;
+  }
+
+
+  //START SIDE NAVIGATION BAR FUNCTIONS:
+  function openNavBar(){
+    document.getElementById("sideBar").style.width = "400px";
+    document.getElementById("sideButton").style.visibility = "hidden";
+  }
+
+  function closeNavBar(){
+    document.getElementById("sideBar").style.width = "0";
+    document.getElementById("sideButton").style.visibility = "visible";
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=locals.key%>&callback=initMap" async defer>
+</script>
 
 <%- include ('../partials/footer') %>
