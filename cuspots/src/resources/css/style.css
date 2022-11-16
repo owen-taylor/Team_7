@@ -1,6 +1,8 @@
 html,
 body{
-    background-color: #a3b18a !important;
+    background-image: url('../images/boulder.jpg');
+    max-width: 100%;
+    height: auto;
 }
 header{
     background-color: #588157;
