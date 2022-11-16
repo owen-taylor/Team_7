@@ -8,6 +8,28 @@ header{
     background-color: #588157;
     border: none;
 }
+
+.container h1 {
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 40px 0;
+}
+
+#username {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+#username input {
+    font-size: 16px;
+    width: 100%;
+    padding: 15px 10px;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+}
+
 #Login{
     background-color:#588157 !important;
     color:#dad7cd !important;
