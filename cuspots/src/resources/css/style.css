@@ -1,6 +1,9 @@
 html,
 body{
-    background-color: #a3b18a !important;
+    /*background-color: #a3b18a !important;*/
+    background-image: url('../green.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 header{
     background-color: #588157;
