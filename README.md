@@ -2,7 +2,7 @@
 Application Description:
   The purpose of this application is to rate various places on campus. This includes eating spots, bathrooms, places to rest, and study. This will give people
    information on the best places to do anything at CU Boulder. 
-   Users will be able to see places people have rated on a map and chose to visit them. Users can also rate and review new spots they have found or existing spots.
+   Users will be able to see places people have rated on a map and chose to visit them. Users can also rate new spots they have found or existing spots.
    Each spot will have an average star rating so users can know how good it is out of 10.
 
 Contributors:
