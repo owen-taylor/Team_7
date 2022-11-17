@@ -16,8 +16,6 @@ Contributors:
     Github: owen-taylor
     Email: owta3939@colorado.edu
 
-  Dan Mcalear - absent
-  Davion Hochhalter - absent
   
 Technology Stack:
   - Front-end: HTML, CSS, and EJS templating.
@@ -36,4 +34,4 @@ How to run the tests:
   - See PDF in milestone submissions
   
 Link to deployed application:
-  -TODO:
+  - CU server containers don't work
