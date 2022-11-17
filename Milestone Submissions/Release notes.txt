@@ -1,17 +1,4 @@
-
-  11/5:
-    - Created endpoint to return updated map with a merker of a particular spot
-    - Added code to the map.ejs file that allows the user to view a spot location
-  11/7:
-    - Created endpoint to insert spots into spots database
-    - Created modal to add spot
-    - Added functionality to add a spot
-  11/7:
-    - Created Modal to add a review to a spot
-    -Added review spot functionality
-    
-    
- Release notes:
+Release notes:
  11/2:
   - Created the docker-compose file, the package.json, the .env, and the overall directory structure
   - Created a users database
