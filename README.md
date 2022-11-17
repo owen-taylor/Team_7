@@ -12,9 +12,6 @@ Contributors:
   Saragam Gadal - present
     Github: SaragamG
     Email: saga6408@colorado.edu
-  Owen Newton - present
-    Github: Owen12621
-    Email: owne4784@colorado.edu
   Owen Taylor  present
     Github: owen-taylor
     Email: owta3939@colorado.edu
