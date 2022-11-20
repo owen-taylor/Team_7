@@ -1,0 +1,10 @@
+Test with Sarah:
+Feature 1: Everything working as planned
+Feature 2: Everything working as planned
+Feature 3: Sarah could not find the button to bring back the side navigation bar - color blended in with the map. We should change the color.
+
+Test with Evan's parents:
+Feature 1: They could log in after they created an account, so everything worked there
+Feature 2: They could not find the register page. We should probably just make a tab for it, instead of just having a link on the login page.
+Feature 3: Everything working as planned
+
