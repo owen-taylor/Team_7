@@ -8,3 +8,8 @@ Feature 1: They could log in after they created an account, so everything worked
 Feature 2: They could not find the register page. I changed the website since then to just include a register tab instead of only having the link from the login page.
 Feature 3: Almost everything worked, except they were able to make a spot with no name on it. This has been fixed now
 
+Test with Owen's Aunt:
+Feature 1: Log in worked completely
+Feature 2: Registration worked completely
+Feature 3: Everything worked, but there was feedback that the numbered rating system is not very intuitive and stars would be better.
+
