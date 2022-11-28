@@ -13,3 +13,7 @@ Feature 1: Log in worked completely
 Feature 2: Registration worked completely
 Feature 3: Everything worked, but there was feedback that the numbered rating system is not very intuitive and stars would be better.
 
+Test with Saragam's roommate:
+Feature 1: They were able to log in successfully after making an account
+Feature 2: Redirected to registration page and was able to register successfully
+Feature 3: Was able to add a spot but said that there should be categories to place the spots in to make less arbitrary.
