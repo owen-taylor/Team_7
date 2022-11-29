@@ -2,18 +2,18 @@
 <%- include ('../partials/menu') %>
 
 <main>
-  <div class="container">
-    <h1>Register:</h1>
+  <div class="form">
+    <h1>Register</h1>
     <form action="/register" method="POST">
-      <div class="mb-3">
+      <div class="user">
         <label for="username" class="form-label">Set Username:</label>
         <input name="username" type="text" class="form-control" id="username" placeholder="Enter username" required />
       </div>
-      <div class="mb-3">
+      <div class="pass">
           <label for="password" class="form-label">Set Password:</label>
           <input name="password" type="text" class="form-control" id="password" placeholder="Enter password" required />
       </div>
-      <div class="mb-3">
+      <div class="button">
         <button id="Register" class="btn btn-primary" type="submit">Register</button>
       </div>
   </form>

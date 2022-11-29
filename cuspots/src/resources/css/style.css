@@ -1,7 +1,7 @@
 html,
 body{
     /*background-color: #a3b18a !important;*/
-    background-image: url('../green.jpg');
+    background-image: url('../images/green.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -10,19 +10,24 @@ header{
     border: none;
 }
 
-.container h1 {
-    font-size: 40px;
+.form {
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    color: white;
+}
+
+.form h1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 50px;
     text-align: center;
     text-transform: uppercase;
     margin: 40px 0;
 }
 
-#username {
-    font-size: 20px;
-    margin: 15px 0;
-}
-
-#username input {
+.form input {
     font-size: 16px;
     width: 100%;
     padding: 15px 10px;
@@ -31,15 +36,36 @@ header{
     border-radius: 5px;
 }
 
+#username {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+#password {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+a:link, a:visited {
+    background-color: #3a5a40;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
 #Login{
     background-color:#588157 !important;
-    color:#dad7cd !important;
+    color:white !important;
     border-color:#3a5a40 !important;
+    margin: 15px 0;
 }
 #Register{
     background-color:#588157 !important;
     color:#dad7cd !important;
     border-color:#3a5a40 !important;
+    margin: 15px 0;
 }
 
 /*
