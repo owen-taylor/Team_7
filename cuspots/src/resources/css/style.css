@@ -1,7 +1,7 @@
 html,
 body{
     /*background-color: #a3b18a !important;*/
-    background-image: url('../images/green.jpg');
+    background-image: url('../css/green.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
